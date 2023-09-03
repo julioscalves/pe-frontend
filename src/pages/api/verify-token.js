@@ -1,0 +1,33 @@
+import { ROOT_URL, TOKEN_VERIFICATION_PATH } from "@/utils/constants";
+
+export default async function handler(req, res) {
+  const { authorization } = req.headers;
+
+  if (!authorization) {
+    return res.status(401).json({ valid: false });
+  }
+
+  const token = authorization.replace("Token ", "");
+
+  try {
+    const response = await fetch(
+        ROOT_URL + TOKEN_VERIFICATION_PATH ,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ token }),
+      }
+    );
+
+    if (response.ok) {
+      const { is_token_valid, token } = await response.json();
+      return res.status(200).json({ is_token_valid, token });
+    } else {
+      return res.status(401).json({ is_token_valid: false });
+    }
+  } catch (error) {
+    return res.status(500).json({ is_token_valid: false });
+  }
+}
