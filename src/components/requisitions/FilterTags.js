@@ -47,6 +47,10 @@ export default function FilterTags({ setVisualizationData, data }) {
     setVisualizationData([...filtered]);
   }, [selectedOptions]);
 
+
+  console.log(data)
+  console.log(options)
+
   return (
     <div className="p-4">
       <div className="space-y-2">
