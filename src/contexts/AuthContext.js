@@ -34,7 +34,7 @@ export function AuthProvider({ children }) {
     destroyCookie(null, "user");
     destroyCookie(null, "name");
 
-    router.push("/auth");
+    router.push("/");
   };
 
   return (
