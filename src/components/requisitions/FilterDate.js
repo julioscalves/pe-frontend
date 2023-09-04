@@ -25,8 +25,6 @@ export default function DateFilter({ setVisualizationData, data }) {
     setVisualizationData(filteredData);
   };
 
-  console.log(data);
-
   return (
     <div className="space-x-4">
       <div className="grid grid-cols-1 gap-1">

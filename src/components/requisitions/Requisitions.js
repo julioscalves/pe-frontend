@@ -8,6 +8,33 @@ import Shimmer from "../utils/Shimmer";
 import { FaPlusCircle } from "react-icons/fa";
 import { Tooltip } from "flowbite-react";
 import RequisitionSidebar from "./RequisitionSidebar";
+import Pagination from "../utils/Paginator";
+import LoadingSpinner from "../utils/LoadingSpinner";
+
+async function fetchData({ URL, authToken, setData, setNextPage, setPreviousPage, setLoading, setError }) {
+  console.log(URL)
+  try {
+    const response = await fetch(URL, {
+      headers: {
+        Authorization: `Token ${authToken}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    console.log(data);
+    setData(data.results);
+    setNextPage(data.next);
+    setPreviousPage(data.previous);
+    setLoading(false);
+  } catch (error) {
+    setError(error);
+    setLoading(false);
+  }
+}
 
 function RequisitionList({ visualizationData }) {
   return !visualizationData || visualizationData.length === 0 ? (
@@ -26,49 +53,40 @@ export default function Requisitions() {
   const [visualizationData, setVisualizationData] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  const { authToken } = useAuth();
-  const [nextPage, setNextPage] = useState(null)
-  const [previousPage, setPreviousPage] = useState(null)
+  const [nextPage, setNextPage] = useState(null);
+  const [previousPage, setPreviousPage] = useState(null);
 
-  console.log(data);
+  const { authToken } = useAuth();
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          ROOT_URL + REQUISITIONS_PATH + "?ordering=-timestamp",
-          {
-            headers: {
-              Authorization: `Token ${authToken}`,
-            },
-          }
-        );
+    const URL = ROOT_URL + REQUISITIONS_PATH + "?ordering=-timestamp";
 
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-
-        const data = await response.json();
-        setData(data.results);
-        setVisualizationData(data.results);
-        setNextPage(data.next)
-        setPreviousPage(data.previous)
-        setLoading(false);
-      } catch (error) {
-        setError(error);
-        setLoading(false);
-      }
+    const asyncWrapper = async () => {
+      fetchData({ URL, authToken, setData, setNextPage, setPreviousPage, setLoading, setError });
     };
 
-    fetchData();
-  }, []);
+    asyncWrapper();
+  }, [authToken]);
+
+  const handleNextPage = () => {
+    if (nextPage) {
+      fetchData({ URL: nextPage, authToken, setData, setNextPage, setPreviousPage, setLoading, setError });
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (previousPage) {
+      fetchData({ URL: previousPage, authToken, setData, setNextPage, setPreviousPage, setLoading, setError });
+    }
+  };
+
+  if (loading) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <div className="p-4 flex">
-      <RequisitionSidebar
-        setVisualizationData={setVisualizationData}
-        data={data}
-      ></RequisitionSidebar>
+      <RequisitionSidebar setVisualizationData={setVisualizationData} data={data}></RequisitionSidebar>
 
       <div className="flex-grow">
         <h2 className="text-2xl font-semibold text-center">Requisições</h2>
@@ -86,6 +104,9 @@ export default function Requisitions() {
           ) : (
             <RequisitionList visualizationData={visualizationData} />
           )}
+          <div className="mx-auto">
+            <Pagination previous={previousPage} next={nextPage} handlePreviousPage={handlePreviousPage} handleNextPage={handleNextPage} />
+          </div>
         </div>
       </div>
     </div>
