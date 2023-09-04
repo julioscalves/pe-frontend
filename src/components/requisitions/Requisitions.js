@@ -11,8 +11,17 @@ import RequisitionSidebar from "./RequisitionSidebar";
 import Pagination from "../utils/Paginator";
 import LoadingSpinner from "../utils/LoadingSpinner";
 
-async function fetchData({ URL, authToken, setData, setNextPage, setPreviousPage, setLoading, setError }) {
-  console.log(URL)
+async function fetchData({
+  URL,
+  authToken,
+  setData,
+  setNextPage,
+  setPreviousPage,
+  setVisualizationData,
+  setLoading,
+  setError,
+}) {
+  console.log(URL);
   try {
     const response = await fetch(URL, {
       headers: {
@@ -25,10 +34,10 @@ async function fetchData({ URL, authToken, setData, setNextPage, setPreviousPage
     }
 
     const data = await response.json();
-    console.log(data);
     setData(data.results);
     setNextPage(data.next);
     setPreviousPage(data.previous);
+    setVisualizationData(data.results);
     setLoading(false);
   } catch (error) {
     setError(error);
@@ -62,7 +71,15 @@ export default function Requisitions() {
     const URL = ROOT_URL + REQUISITIONS_PATH + "?ordering=-timestamp";
 
     const asyncWrapper = async () => {
-      fetchData({ URL, authToken, setData, setNextPage, setPreviousPage, setLoading, setError });
+      fetchData({
+        URL,
+        authToken,
+        setData,
+        setNextPage,
+        setPreviousPage,
+        setLoading,
+        setError,
+      });
     };
 
     asyncWrapper();
@@ -70,13 +87,31 @@ export default function Requisitions() {
 
   const handleNextPage = () => {
     if (nextPage) {
-      fetchData({ URL: nextPage, authToken, setData, setNextPage, setPreviousPage, setLoading, setError });
+      fetchData({
+        URL: nextPage,
+        authToken,
+        setData,
+        setNextPage,
+        setPreviousPage,
+        setVisualizationData,
+        setLoading,
+        setError,
+      });
     }
   };
 
   const handlePreviousPage = () => {
     if (previousPage) {
-      fetchData({ URL: previousPage, authToken, setData, setNextPage, setPreviousPage, setLoading, setError });
+      fetchData({
+        URL: previousPage,
+        authToken,
+        setData,
+        setNextPage,
+        setPreviousPage,
+        setVisualizationData,
+        setLoading,
+        setError,
+      });
     }
   };
 
@@ -86,7 +121,10 @@ export default function Requisitions() {
 
   return (
     <div className="p-4 flex">
-      <RequisitionSidebar setVisualizationData={setVisualizationData} data={data}></RequisitionSidebar>
+      <RequisitionSidebar
+        setVisualizationData={setVisualizationData}
+        data={data}
+      ></RequisitionSidebar>
 
       <div className="flex-grow">
         <h2 className="text-2xl font-semibold text-center">Requisições</h2>
@@ -105,7 +143,12 @@ export default function Requisitions() {
             <RequisitionList visualizationData={visualizationData} />
           )}
           <div className="mx-auto">
-            <Pagination previous={previousPage} next={nextPage} handlePreviousPage={handlePreviousPage} handleNextPage={handleNextPage} />
+            <Pagination
+              previous={previousPage}
+              next={nextPage}
+              handlePreviousPage={handlePreviousPage}
+              handleNextPage={handleNextPage}
+            />
           </div>
         </div>
       </div>
