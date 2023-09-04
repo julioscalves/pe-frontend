@@ -27,6 +27,8 @@ export default function Requisitions() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const { authToken } = useAuth();
+  const [nextPage, setNextPage] = useState(null)
+  const [previousPage, setPreviousPage] = useState(null)
 
   console.log(data);
 
@@ -47,8 +49,10 @@ export default function Requisitions() {
         }
 
         const data = await response.json();
-        setData(data);
-        setVisualizationData(data);
+        setData(data.results);
+        setVisualizationData(data.results);
+        setNextPage(data.next)
+        setPreviousPage(data.previous)
         setLoading(false);
       } catch (error) {
         setError(error);
