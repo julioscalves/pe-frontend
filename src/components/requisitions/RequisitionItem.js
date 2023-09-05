@@ -46,8 +46,6 @@ export default function ListItem({ item, tags }) {
     statusTime = statusDateTime.time;
   }
 
-  console.log(item)
-
   return (
     <Link href={pathname + "/" + item.protocol}>
       <div className="transition duration-300 hover:bg-blue-700 bg-gray-800 p-4 rounded shadow-md hover:shadow-lg transition duration-300 mb-4 w-full px-5 py-5">
