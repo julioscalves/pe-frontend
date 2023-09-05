@@ -5,6 +5,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import BackButton from "../utils/BackButton";
 import Link from "next/link";
 import Button from "../utils/Button";
+import { useRouter } from "next/router";
 
 export default function Events() {
   const [data, setData] = useState([]);

@@ -3,7 +3,7 @@ export default function Checkbox({ label, text, checked, onChange }) {
     <div className="flex">
       <div className="flex items-center h-5">
         <input
-          id="helper-checkbox"
+          id={label}
           aria-describedby="helper-checkbox-text"
           type="checkbox"
           checked={checked}
