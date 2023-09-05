@@ -17,7 +17,7 @@ export default function Events() {
     })
       .then((response) => response.json())
       .then((data) => {
-        setData(data);
+        setData(data.results);
       })
       .catch((error) => {
         setError(error);
@@ -31,7 +31,7 @@ export default function Events() {
         <div className="text-left">
           <BackButton>Retornar</BackButton>
         </div>
-        {data.length > 1 ? (
+        {data.length > 0 ? (
           data.reverse().map((item) => <EventItem key={item.id} item={item} />)
         ) : (
           <p className="text-center">Nenhum evento cadastrado</p>
