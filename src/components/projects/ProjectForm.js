@@ -7,6 +7,7 @@ import { ROOT_URL, PROFILES_PATH, PROJECTS_PATH } from "@/utils/constants";
 import { useAuth } from "@/contexts/AuthContext";
 import LoadingSpinner from "../utils/LoadingSpinner";
 import Alert from "../utils/Alert";
+import { useRouter } from "next/router";
 
 export default function ProjectForm() {
   const [title, setTitle] = useState("");
@@ -24,6 +25,8 @@ export default function ProjectForm() {
   const [alertType, setAlertType] = useState("");
 
   const { authToken } = useAuth();
+
+  const router = useRouter();
 
   useEffect(() => {
     const isTitleValid = title.length > 10;
@@ -69,6 +72,7 @@ export default function ProjectForm() {
         setDisplayAlert(true);
         setAlertType("success");
         setAlertMessage("Projeto enviado com successo! Redirecionando...");
+        router.push("/dashboard/projects");
       } else {
         setDisplayAlert(true);
         setAlertType("warning");
@@ -80,9 +84,7 @@ export default function ProjectForm() {
     } catch (error) {
       setDisplayAlert(true);
       setAlertType("danger");
-      setAlertMessage(
-        "Erro na submissão do formulário.", error
-      );
+      setAlertMessage("Erro na submissão do formulário.", error);
     } finally {
       setLoading(false);
     }
