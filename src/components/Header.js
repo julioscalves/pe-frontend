@@ -1,8 +1,8 @@
 import { Button, Navbar, Dropdown, Item } from "flowbite-react";
 import { useAuth } from "@/contexts/AuthContext";
 import Link from "next/link";
-import { FaProjectDiagram } from "react-icons/fa";
 import { useRouter } from "next/router";
+import { MdPestControlRodent } from "react-icons/md";
 
 export default function Header() {
   const { logout, name } = useAuth();
@@ -13,12 +13,12 @@ export default function Header() {
     e.preventDefault();
     logout();
   };
-
+  
   return (
     <Navbar fluid rounded>
       <Navbar.Brand>
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
-          <Link href="/dashboard"><FaProjectDiagram /></Link>
+          <Link href="/dashboard"><MdPestControlRodent className="h-8 w-8" /></Link>
         </span>
       </Navbar.Brand>
       <div className="flex md:order-2 text-sm text-gray-100">
@@ -27,7 +27,7 @@ export default function Header() {
           inline
           label={`Olá, ${name}!`}
         >
-          <Button color="gray" className="text-center mx-auto px-2" pill onClick={handleLogout}>Logout</Button>
+          <Button color="gray" className="text-center mx-auto px-2 border-0 outline-0" onClick={handleLogout}>Logout</Button>
         </Dropdown>
         <Navbar.Toggle />
       </div>

@@ -31,8 +31,6 @@ export default function ProfileModalForm({
   const [isStaff, setIsStaff] = useState(previousIsStaff);
   const [isAdvisor, setIsAdvisor] = useState(previousIsAdvisor);
 
-  console.log('previousIsStaff: ', isStaff)
-
   const { authToken } = useAuth();
 
   const handleSubmit = async (e) => {
@@ -68,8 +66,6 @@ export default function ProfileModalForm({
       console.error("Error during registration:", error);
     }
   };
-
-  useEffect(() => console.log(isStaff, previousIsStaff), [isStaff, previousIsStaff])
 
   if (isModalActive) {
     return (

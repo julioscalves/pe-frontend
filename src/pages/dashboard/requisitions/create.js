@@ -1,4 +1,4 @@
-import { Head } from "next/document";
+import Head from "next/head";
 import Layout from "@/components/Layout";
 import LoginWall from "@/components/LoginWall";
 import RequisitionForm from "@/components/requisitions/RequisitionForm"
