@@ -40,7 +40,7 @@ export default function Events() {
             </Link>
           </div>
         </div>
-        {data.length > 1 ? (
+        {data.length > 0 ? (
           data
             .reverse()
             .map((item) => <ProfileItem key={item.id} item={item} />)
