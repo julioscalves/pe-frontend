@@ -4,6 +4,7 @@ import InputField from "../utils/InputField";
 import { ROOT_URL, DEPARTMENTS_PATH } from "@/utils/constants";
 import { useAuth } from "@/contexts/AuthContext";
 import TextArea from "../utils/TextArea";
+import AutocompleteInputField from "../utils/AutocompleteInputField";
 
 export default function ProfileModalForm({
   isModalActive,
