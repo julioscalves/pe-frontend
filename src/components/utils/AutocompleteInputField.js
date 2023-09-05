@@ -32,10 +32,11 @@ export default function AutocompleteInputField({
         }
 
         const data = await response.json();
+        const results = data.results
 
         const newOptions = showPk
-          ? data.map((item) => `${item[field]} - ${item["id"]}`)
-          : data.map((item) => item[field]);
+          ? results.map((item) => `${item[field]} - ${item["id"]}`)
+          : results.map((item) => item[field]);
 
         setOptions(newOptions);
       } catch (error) {
