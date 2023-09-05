@@ -11,6 +11,7 @@ import {
 import { useAuth } from "@/contexts/AuthContext";
 import LoadingSpinner from "../utils/LoadingSpinner";
 import Checkbox from "@/components/utils/Checkbox";
+import { useRouter } from "next/router";
 
 export default function ProfileForm() {
   const [username, setUsername] = useState("");
