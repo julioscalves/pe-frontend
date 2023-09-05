@@ -19,7 +19,7 @@ export default function Events() {
     })
       .then((response) => response.json())
       .then((data) => {
-        setData(data);
+        setData(data.results);
       })
       .catch((error) => {
         setError(error);

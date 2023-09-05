@@ -29,7 +29,7 @@ export default function Requisitions() {
     })
       .then((response) => response.json())
       .then((data) => {
-        setData(data);
+        setData(data.results);
         setLoading(false)
       })
       .catch((error) => {
