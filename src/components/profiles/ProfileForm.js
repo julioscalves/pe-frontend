@@ -26,6 +26,7 @@ export default function ProfileForm() {
   const [loading, setLoading] = useState(false);
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
+  const router = useRouter();
   const { authToken } = useAuth();
   const passwordWarningStyle = "ring-2 ring-rose-500";
 
@@ -78,6 +79,7 @@ export default function ProfileForm() {
 
       if (response.ok) {
         console.log("Form data submitted successfully!");
+        router.push("/dashboard/profiles");
         setLoading(false);
       } else {
         console.error("Error submitting form data");
