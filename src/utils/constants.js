@@ -1,4 +1,4 @@
-export const ROOT_URL = "http://127.0.0.1:8000/";
+export const ROOT_URL = "https://bionutriufpe.pythonanywhere.com/";
 export const AUTH_PATH = "get-token/";
 export const TOKEN_VERIFICATION_PATH = "verify-token/";
 export const CREATE_PROFILE_PATH = "verify-token/";
