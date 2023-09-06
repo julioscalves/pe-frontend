@@ -8,13 +8,14 @@ export default function AutocompleteInputField({
   url,
   placeholder,
   field = "name",
-  showPk = false,
+  showIdentifier = false,
+  identifier = "id",
 }) {
   const [inputValue, setInputValue] = useState("");
   const [options, setOptions] = useState([]);
   const { authToken } = useAuth();
 
-  const searchDelay = 200
+  const searchDelay = 200;
 
   useEffect(() => {
     let timeoutId;
@@ -32,10 +33,17 @@ export default function AutocompleteInputField({
         }
 
         const data = await response.json();
-        const results = data.results
 
-        const newOptions = showPk
-          ? results.map((item) => `${item[field]} - ${item["id"]}`)
+        let results;
+
+        if (data.hasOwnProperty("results")) {
+          results = data.results;
+        } else {
+          results = data;
+        }
+
+        const newOptions = showIdentifier
+          ? results.map((item) => `${item[field]} - ${item[identifier]}`)
           : results.map((item) => item[field]);
 
         setOptions(newOptions);

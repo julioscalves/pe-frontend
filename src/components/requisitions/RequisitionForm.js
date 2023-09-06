@@ -131,7 +131,7 @@ export default function Register() {
               url={ROOT_URL + PROJECTS_PATH}
               field={"title"}
               placeholder={"Caso não encontre o projeto, realize o cadastro"}
-              showPk={true}
+              showIdentifier={true}
               required
             />
             <InputField
