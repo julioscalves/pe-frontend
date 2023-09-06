@@ -6,26 +6,98 @@ import BackButton from "../utils/BackButton";
 import Link from "next/link";
 import Button from "../utils/Button";
 import { useRouter } from "next/router";
+import Pagination from "../utils/Paginator";
+import LoadingSpinner from "../utils/LoadingSpinner";
+
+async function fetchData({
+  URL,
+  authToken,
+  setData,
+  setNextPage,
+  setPreviousPage,
+  setLoading,
+  setError,
+}) {
+  try {
+    const response = await fetch(URL, {
+      headers: {
+        Authorization: `Token ${authToken}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+    setData(data.results);
+    setNextPage(data.next);
+    setPreviousPage(data.previous);
+    setLoading(false);
+  } catch (error) {
+    setError(error);
+    setLoading(false);
+  }
+}
 
 export default function Events() {
   const [data, setData] = useState([]);
   const [error, setError] = useState(null);
+  const [nextPage, setNextPage] = useState(null);
+  const [previousPage, setPreviousPage] = useState(null);
+  const [loading, setLoading] = useState(true);
+
   const { authToken } = useAuth();
 
   useEffect(() => {
-    fetch(ROOT_URL + PROFILES_PATH, {
-      headers: {
-        Authorization: `Token ${authToken}`,
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setData(data.results);
-      })
-      .catch((error) => {
-        setError(error);
+    const URL = ROOT_URL + PROFILES_PATH + "?";
+
+    const asyncWrapper = async () => {
+      fetchData({
+        URL,
+        authToken,
+        setData,
+        setNextPage,
+        setPreviousPage,
+        setLoading,
+        setError,
       });
+    };
+
+    asyncWrapper();
   }, []);
+
+  const handleNextPage = () => {
+    if (nextPage) {
+      fetchData({
+        URL: nextPage,
+        authToken,
+        setData,
+        setNextPage,
+        setPreviousPage,
+        setLoading,
+        setError,
+      });
+    }
+  };
+
+  const handlePreviousPage = () => {
+    if (previousPage) {
+      fetchData({
+        URL: previousPage,
+        authToken,
+        setData,
+        setNextPage,
+        setPreviousPage,
+        setLoading,
+        setError,
+      });
+    }
+  };
+
+  if (loading) {
+    return <LoadingSpinner />;
+  }
 
   return (
     <div className="p-4">
@@ -46,8 +118,18 @@ export default function Events() {
             .reverse()
             .map((item) => <ProfileItem key={item.id} item={item} />)
         ) : (
-          <p className="text-center text-2xl font-semibold text-gray-500">Nenhum usuário cadastrado</p>
+          <p className="text-center text-2xl font-semibold text-gray-500">
+            Nenhum usuário cadastrado
+          </p>
         )}
+        <div className="mx-auto">
+        <Pagination
+          previous={previousPage}
+          next={nextPage}
+          handlePreviousPage={handlePreviousPage}
+          handleNextPage={handleNextPage}
+        />
+      </div>
       </div>
     </div>
   );

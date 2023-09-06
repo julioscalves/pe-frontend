@@ -34,7 +34,7 @@ export default function ListItem({ item }) {
       {item.project_file !== null ? (
         <p className="text-gray-400">
           <strong>Arquivo de projeto: </strong>{" "}
-          <Link href={item.project_file}>{item.ceua_protocol}</Link>
+          <Link href={item.project_file}>{item.project_file}</Link>
         </p>
       ) : (
         <p className="text-gray-400">
@@ -44,7 +44,7 @@ export default function ListItem({ item }) {
       {item.ceua_file !== null ? (
         <p className="text-gray-400">
           <strong>Arquivo de protocolo CEUA: </strong>{" "}
-          <Link href={item.ceua_file}>{item.ceua_protocol}</Link>
+          <Link href={item.ceua_file}>{item.ceua_file}</Link>
         </p>
       ) : (
         <p className="text-gray-400">
