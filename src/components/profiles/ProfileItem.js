@@ -32,7 +32,7 @@ export default function ListItem({ item }) {
           <h3 className="text-xl font-semibold mb-2 text-gray-100 text-center">
             {item.name}
           </h3>
-          <button className="text-right hover:text-amber-500" onClick={() => setIsModalActive(true)}>
+          <button className="text-right hover:text-amber-500 mb-auto" onClick={() => setIsModalActive(true)}>
             <FaWrench className="inline-block"/>
           </button>
         </div>
