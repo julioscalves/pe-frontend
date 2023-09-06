@@ -1,6 +1,5 @@
 // components/Layout.js
 import React from 'react';
-import Sidebar from './dashboard/Sidebar';
 import Header from './Header';
 import { useAuth } from "@/contexts/AuthContext";
 

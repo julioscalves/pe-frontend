@@ -26,13 +26,13 @@ export function AuthProvider({ children }) {
   };
 
   const logout = () => {
-    setAuthToken(null);
-    setUser(null);
-    setName(null);
-    
     destroyCookie(null, "authToken");
     destroyCookie(null, "user");
     destroyCookie(null, "name");
+    
+    setAuthToken(null);
+    setUser(null);
+    setName(null);
 
     router.push("/");
   };
