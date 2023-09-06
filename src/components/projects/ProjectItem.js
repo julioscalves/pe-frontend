@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 
 export default function ListItem({ item }) {
   const { pathname } = useRouter();
-  console.log(item);
 
   return (
     <div className="transition duration-500 hover:scale-105 hover:bg-blue-700 bg-gray-800 p-4 rounded shadow-md hover:shadow-lg transition duration-300 mb-4 w-full px-5 py-5">
@@ -34,7 +33,7 @@ export default function ListItem({ item }) {
       {item.project_file !== null ? (
         <p className="text-gray-400">
           <strong>Arquivo de projeto: </strong>{" "}
-          <Link href={item.project_file}>{item.project_file}</Link>
+          <Link href={item.project_file}><p className="underline">Aqui</p></Link>
         </p>
       ) : (
         <p className="text-gray-400">
@@ -44,7 +43,7 @@ export default function ListItem({ item }) {
       {item.ceua_file !== null ? (
         <p className="text-gray-400">
           <strong>Arquivo de protocolo CEUA: </strong>{" "}
-          <Link href={item.ceua_file}>{item.ceua_file}</Link>
+          <Link href={item.ceua_file}><p className="underline">Aqui</p></Link>
         </p>
       ) : (
         <p className="text-gray-400">

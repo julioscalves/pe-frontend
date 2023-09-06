@@ -90,7 +90,7 @@ export default function ProfileModalForm({
                 onChange={(e) => setEmail(e.target.value)}
               />
               <InputField
-                label="Phone"
+                label="Telefone"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
               />
