@@ -58,7 +58,7 @@ export default function AutocompleteInputField({
     return () => {
       clearTimeout(timeoutId); // Clear the timeout if component unmounts
     };
-  }, [inputValue, authToken, url, field, showPk]);
+  }, [inputValue, authToken, url, field, showIdentifier]);
 
   const handleInputChange = (e) => {
     setInputValue(e.target.value);
