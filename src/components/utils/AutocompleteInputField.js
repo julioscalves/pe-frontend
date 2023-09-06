@@ -56,7 +56,7 @@ export default function AutocompleteInputField({
     timeoutId = setTimeout(fetchOptions, searchDelay);
 
     return () => {
-      clearTimeout(timeoutId); // Clear the timeout if component unmounts
+      clearTimeout(timeoutId);
     };
   }, [inputValue, authToken, url, field, showIdentifier]);
 

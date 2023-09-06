@@ -1,7 +1,15 @@
 import React from "react";
 
-export default function SubmitButton({ type, children, disabled, onClick, color="blue"}) {
-  const disabledClass = disabled ? "bg-gray-900" : `bg-${color}-500 hover:bg-${color}-700`
+export default function SubmitButton({
+  type,
+  children,
+  disabled,
+  onClick,
+  color = "blue",
+}) {
+  const disabledClass = disabled
+    ? "bg-gray-900"
+    : `bg-${color}-500 hover:bg-${color}-700`;
 
   return (
     <button

@@ -1,4 +1,10 @@
-export default function Button({ children, onClick, properties="", color="green", disabled=false }) {
+export default function Button({
+  children,
+  onClick,
+  properties = "",
+  color = "green",
+  disabled = false,
+}) {
   return (
     <button
       type="button"

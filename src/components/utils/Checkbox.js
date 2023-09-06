@@ -16,13 +16,13 @@ export default function Checkbox({ label, text, checked, onChange }) {
           htmlFor="helper-checkbox"
           className="font-medium text-gray-200 dark:text-gray-300"
         >
-          { label }
+          {label}
         </label>
         <p
           id="helper-checkbox-text"
           className="text-xs font-normal text-gray-500 dark:text-gray-300"
         >
-          { text }
+          {text}
         </p>
       </div>
     </div>
