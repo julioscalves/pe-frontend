@@ -123,13 +123,13 @@ export default function Events() {
           </p>
         )}
         <div className="mx-auto">
-        <Pagination
-          previous={previousPage}
-          next={nextPage}
-          handlePreviousPage={handlePreviousPage}
-          handleNextPage={handleNextPage}
-        />
-      </div>
+          <Pagination
+            previous={previousPage}
+            next={nextPage}
+            handlePreviousPage={handlePreviousPage}
+            handleNextPage={handleNextPage}
+          />
+        </div>
       </div>
     </div>
   );

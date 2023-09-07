@@ -137,6 +137,8 @@ export default function ProjectForm() {
           url={ROOT_URL + PROFILES_PATH}
           placeholder="Realizar busca por discente"
           field="name"
+          filterOut={true}
+          filterOutBy={"is_advisor"}
         />
         <AutocompleteInputField
           label="Orientador"
@@ -145,6 +147,8 @@ export default function ProjectForm() {
           url={ROOT_URL + PROFILES_PATH}
           placeholder="Realizar busca por orientador"
           field="name"
+          filterIn={true}
+          filterInBy={"is_advisor"}
         />
         <SubmitButton disabled={disabled} onClick={handleSubmit}>
           Enviar

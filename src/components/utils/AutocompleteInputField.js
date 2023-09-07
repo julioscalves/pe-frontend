@@ -10,6 +10,10 @@ export default function AutocompleteInputField({
   field = "name",
   showIdentifier = false,
   identifier = "id",
+  filterOut = false,
+  filterOutBy = null,
+  filterIn = false,
+  filterInBy = null,
 }) {
   const [inputValue, setInputValue] = useState("");
   const [options, setOptions] = useState([]);
@@ -40,6 +44,18 @@ export default function AutocompleteInputField({
           results = data.results;
         } else {
           results = data;
+        }
+
+        if (results.hasOwnProperty("user")) {
+          results = results.filter((item) => !item.user.is_staff);
+        }
+
+        if (filterOut) {
+          results = results.filter((item) => !item[filterOutBy])
+        }
+
+        if (filterIn) {
+          results = results.filter(item => item[filterInBy])
         }
 
         const newOptions = showIdentifier
