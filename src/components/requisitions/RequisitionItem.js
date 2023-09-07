@@ -13,7 +13,6 @@ function Tags({ tags }) {
           label={tag.name}
           color={tag.color}
           key={tag.id}
-          link={`/tags/${tag.slug}`}
         />
       ))}
     </div>

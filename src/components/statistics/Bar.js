@@ -26,7 +26,7 @@ export default function Bar({ data }) {
   const transformedData = transformData(data);
 
   return (
-    <div style={{ height: "500px" }}>
+    <div style={{ height: "600px" }}>
       <ResponsiveBar
         data={transformedData}
         keys={[
@@ -36,7 +36,7 @@ export default function Bar({ data }) {
           "Fêmeas entregues",
         ]}
         indexBy="id"
-        margin={{ top: 50, right: 60, bottom: 80, left: 60 }}
+        margin={{ top: 50, right: 60, bottom: 130, left: 60 }}
         padding={0.3}
         groupMode="grouped"
         colors={CHART_COLOR_PALETTE.colors}
@@ -45,7 +45,7 @@ export default function Bar({ data }) {
         axisBottom={{
           tickSize: 5,
           tickPadding: 5,
-          tickRotation: 0,
+          tickRotation: -45,
           legend: "",
           legendPosition: "middle",
           legendOffset: 32,
@@ -61,11 +61,11 @@ export default function Bar({ data }) {
         legends={[
           {
             dataFrom: "keys",
-            anchor: "bottom",
+            anchor: "top",
             direction: "row",
             justify: false,
-            translateX: 0, // Set to 0 to align with the middle
-            translateY: 70, // Adjust this value to control the distance from X-axis
+            translateX: 0,
+            translateY: -40, 
             itemsSpacing: 2,
             itemWidth: 135,
             itemHeight: 20,

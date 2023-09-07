@@ -1,7 +1,6 @@
 export const ROOT_URL = "https://bionutriufpe.pythonanywhere.com/";
 export const AUTH_PATH = "get-token/";
 export const TOKEN_VERIFICATION_PATH = "verify-token/";
-export const CREATE_PROFILE_PATH = "verify-token/";
 export const REQUISITIONS_PATH = "api/requisitions/";
 export const EVENTS_PATH = "api/events/";
 export const DELIVERIES_PATH = "api/deliveries/";
@@ -22,15 +21,40 @@ export const REQUISITION_STATUS = {
 };
 export const CHART_COLOR_PALETTE = {
   colors: [
-    '#1f77b4', // Dark blue
-    '#ff7f0e', // Dark orange
-    '#2ca02c', // Dark green
-    '#d62728', // Dark red
-    '#9467bd', // Dark purple
-    '#8c564b', // Dark brown
-    '#e377c2', // Dark pink
-    '#7f7f7f', // Dark gray
-    '#bcbd22', // Dark yellow
-    '#17becf', // Dark cyan
+    "#1f77b4", // Dark blue
+    "#ff7f0e", // Dark orange
+    "#2ca02c", // Dark green
+    "#d62728", // Dark red
+    "#9467bd", // Dark purple
+    "#8c564b", // Dark brown
+    "#e377c2", // Dark pink
+    "#7f7f7f", // Dark gray
+    "#bcbd22", // Dark yellow
+    "#17becf", // Dark cyan
   ],
 };
+
+export const TAG_COLOR_CHOICES = [
+  "slate",
+  "gray",
+  "zinc",
+  "neutral",
+  "stone",
+  "red",
+  "orange",
+  "amber",
+  "yellow",
+  "lime",
+  "green",
+  "emerald",
+  "teal",
+  "cyan",
+  "sky",
+  "blue",
+  "indigo",
+  "violet",
+  "purple",
+  "fuchsia",
+  "pink",
+  "rose",
+];

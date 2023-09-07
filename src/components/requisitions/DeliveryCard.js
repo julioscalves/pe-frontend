@@ -145,7 +145,7 @@ export default function DeliveryCard({ data, males, females, protocol }) {
         color="success"
         onClick={() => setIsModalActive(true)}
         pill
-        disabled={malesRemaining === 0 && femalesRemaining === 0}
+        disabled={malesRemaining <= 0 && femalesRemaining <= 0}
       >
         {malesRemaining === 0 && femalesRemaining === 0
           ? "Quantitativo solicitado entregue com sucesso"
