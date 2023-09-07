@@ -5,6 +5,7 @@ import { useAuth } from "@/contexts/AuthContext";
 export default function TagInputField({ tags, setTags }) {
   const [options, setOptions] = useState([]);
   const [inputValue, setInputValue] = useState("");
+  const [selectedCheckboxes, setSelectedCheckboxes] = useState([]); 
   const { authToken } = useAuth();
 
   useEffect(() => {
@@ -40,6 +41,9 @@ export default function TagInputField({ tags, setTags }) {
   const handleTagRemove = (tag) => {
     const updatedTags = tags.filter((t) => t !== tag);
     setTags(updatedTags);
+    setSelectedCheckboxes((prevState) =>
+      prevState.filter((selectedTag) => selectedTag !== tag)
+    );
   };
 
   return (
@@ -61,13 +65,22 @@ export default function TagInputField({ tags, setTags }) {
               className="form-checkbox text-blue-500"
               value={option.id}
               onChange={(e) => {
+                const optionName = option.name;
                 if (e.target.checked) {
-                  setTags([...tags, option.name]);
+                  setTags([...tags, optionName]);
+                  setSelectedCheckboxes((prevState) => [
+                    ...prevState,
+                    optionName,
+                  ]);
                 } else {
-                  const updatedTags = tags.filter((t) => t !== option.name);
+                  const updatedTags = tags.filter((t) => t !== optionName);
                   setTags(updatedTags);
+                  setSelectedCheckboxes((prevState) =>
+                    prevState.filter((selectedTag) => selectedTag !== optionName)
+                  );
                 }
               }}
+              checked={selectedCheckboxes.includes(option.name)} // Reflect checkbox state based on selectedCheckboxes
             />
             <span className="ml-2">{option.name}</span>
           </label>

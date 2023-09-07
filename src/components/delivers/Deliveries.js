@@ -9,7 +9,7 @@ import Shimmer from "../utils/Shimmer";
 
 function DeliveryList({ data }) {
   return (!data || data.length === 0 ? (
-    <p className="text-center text-2xl font-semibold text-gray-500">Nenhuma requisição cadastrada</p>
+    <p className="text-center text-2xl font-semibold text-gray-500">Nenhuma entrega cadastrada</p>
   ) : (
     data.map((item) => <DeliveryItem data={item} key={item.id} />)
   ))

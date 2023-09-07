@@ -4,7 +4,8 @@ import FilterTags from "./FilterTags";
 import FilterDate from "./FilterDate";
 import { FaFilter } from "react-icons/fa";
 import Button from "../utils/Button";
-import {MdMenu, MdMenuOpen} from "react-icons/md";
+import { MdMenu, MdMenuOpen } from "react-icons/md";
+import TagModalForm from "./TagModalForm";
 
 export default function RequisitionSidebar({
   visualizationData,
@@ -12,6 +13,7 @@ export default function RequisitionSidebar({
   data,
 }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isModalActive, setIsModalActive] = useState(false);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -20,12 +22,29 @@ export default function RequisitionSidebar({
   return (
     <div className="sticky h-fit">
       <div className="md:hidden">
-        {isSidebarOpen ? <MdMenuOpen className="h-8 w-8 text-center mx-auto" onClick={toggleSidebar} /> : <MdMenu className="h-8 w-8" onClick={toggleSidebar} />}
+        {isSidebarOpen ? (
+          <MdMenuOpen
+            className="h-8 w-8 text-center mx-auto"
+            onClick={toggleSidebar}
+          />
+        ) : (
+          <MdMenu className="h-8 w-8" onClick={toggleSidebar} />
+        )}
       </div>
-      <Sidebar className={`md:block ${isSidebarOpen ? "block" : "hidden"} z-50`}>
+      <Sidebar
+        className={`md:block ${isSidebarOpen ? "block" : "hidden"} z-50`}
+      >
+        {isModalActive ? (
+          <TagModalForm
+            isModalActive={isModalActive}
+            setIsModalActive={setIsModalActive}
+          />
+        ) : (
+          <></>
+        )}
         <Sidebar.Items>
           <Sidebar.ItemGroup>
-            <Sidebar.Item href="#">
+            <Sidebar.Item>
               <div className="flex items-center justify-center">
                 <FaFilter className="mr-2" />
                 <p className="text-xl font-bold">Filtragem por tag</p>
@@ -35,6 +54,11 @@ export default function RequisitionSidebar({
                 setVisualizationData={setVisualizationData}
                 data={data}
               />
+              <div className="mx-auto text-center">
+                <Button color="blue" onClick={() => setIsModalActive(true)}>
+                  Gerenciar tags
+                </Button>
+              </div>
             </Sidebar.Item>
             <Sidebar.Item href="#">
               <div className="flex items-center justify-center">
