@@ -12,23 +12,23 @@ export function AuthProvider({ children }) {
   const [name, setName] = useState(cookies.name || null);
 
   const login = (user, name, token) => {
-    destroyCookie(null, "authToken");
-    destroyCookie(null, "user");
-    destroyCookie(null, "name");
+    for (const cookieName in cookies) {
+      destroyCookie(null, cookieName);
+    }
     
     setUser(user);
     setName(name);
     setAuthToken(token);
 
-    setCookie(null, "authToken", token, { maxAge: 30 * 24 * 60 * 60 });
-    setCookie(null, "user", user, { maxAge: 30 * 24 * 60 * 60 });
-    setCookie(null, "name", name, { maxAge: 30 * 24 * 60 * 60 });
+    setCookie(null, "authToken", token, { maxAge: 30 * 24 * 60 * 60,  path: '/' });
+    setCookie(null, "user", user, { maxAge: 30 * 24 * 60 * 60,  path: '/' });
+    setCookie(null, "name", name, { maxAge: 30 * 24 * 60 * 60,  path: '/' });
   };
 
   const logout = () => {
-    destroyCookie(null, "authToken");
-    destroyCookie(null, "user");
-    destroyCookie(null, "name");
+    for (const cookieName in cookies) {
+      console.log(destroyCookie(null, cookieName))
+    }
     
     setAuthToken(null);
     setUser(null);

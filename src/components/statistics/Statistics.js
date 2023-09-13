@@ -69,7 +69,7 @@ export default function Statistics() {
       const query = queryParams.join("&");
       updatedURL = `${baseURL}${query}`;
     } else {
-        updatedURL = baseURL
+      updatedURL = baseURL;
     }
 
     const asyncWrapper = async () => {
@@ -111,16 +111,21 @@ export default function Statistics() {
     return transformedData;
   };
 
+  const truncateLongStrings = (string) => {
+    const MAX_LENGTH = 30;
+    return string.length > MAX_LENGTH ? `${string.substring(0, MAX_LENGTH)}...` : string;
+  };
+
   const transformNestedData = (dataObject) => {
     const transformedData = [];
 
-    for (const date in dataObject) {
-      if (dataObject.hasOwnProperty(date)) {
-        const entry = dataObject[date];
+    for (const inst in dataObject) {
+      if (dataObject.hasOwnProperty(inst)) {
+        const entry = dataObject[inst];
         const data = transformSimpleData(entry);
 
         transformedData.push({
-          id: date,
+          id: truncateLongStrings(inst),
           data,
         });
       }

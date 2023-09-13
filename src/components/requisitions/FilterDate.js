@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Button from "../utils/Button";
 
 export default function DateFilter({ setVisualizationData, data }) {
   const [startDate, setStartDate] = useState("");
@@ -44,12 +45,7 @@ export default function DateFilter({ setVisualizationData, data }) {
           value={endDate}
           onChange={(e) => setEndDate(e.target.value)}
         />
-        <button
-          className="bg-blue-500 text-white px-4 py-2 rounded-md"
-          onClick={handleFilter}
-        >
-          Filtrar
-        </button>
+        <Button onClick={handleFilter} color="blue">Filtrar</Button>
       </div>
     </div>
   );
