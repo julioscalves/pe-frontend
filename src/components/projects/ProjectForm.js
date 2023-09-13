@@ -131,21 +131,21 @@ export default function ProjectForm() {
           onChange={(e) => setCeuaFile(e.target.files[0])}
         />
         <AutocompleteInputField
-          label="Discente"
+          label="Autor"
           value={author}
           onChange={(e) => setAuthor(e.target.value)}
           url={ROOT_URL + PROFILES_PATH}
-          placeholder="Realizar busca por discente"
+          placeholder="Realizar busca por autores"
           field="name"
           filterOut={true}
           filterOutBy={"is_advisor"}
         />
         <AutocompleteInputField
-          label="Orientador"
+          label="Responsável"
           value={advisor}
           onChange={(e) => setAdvisor(e.target.value)}
           url={ROOT_URL + PROFILES_PATH}
-          placeholder="Realizar busca por orientador"
+          placeholder="Realizar busca por responsáveis"
           field="name"
           filterIn={true}
           filterInBy={"is_advisor"}

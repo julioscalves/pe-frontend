@@ -99,7 +99,7 @@ export default function TagModalForm({ isModalActive, setIsModalActive }) {
       onClose={() => setIsModalActive(false)}
       className="bg-gray-800"
     >
-      <Modal.Header>Gerenciar tags</Modal.Header>
+      <Modal.Header>Gerenciar etiquetas</Modal.Header>
       <Modal.Body>
         {displayAlert && (
           <Alert
@@ -120,7 +120,7 @@ export default function TagModalForm({ isModalActive, setIsModalActive }) {
               />
             ))
           ) : (
-            <p>Nenhuma tag cadastrada</p>
+            <p>Nenhuma etiqueta cadastrada</p>
           )}
         </div>
       </Modal.Body>
