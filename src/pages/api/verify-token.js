@@ -7,7 +7,6 @@ import { ROOT_URL, TOKEN_VERIFICATION_PATH } from "@/utils/constants";
 
 export default async function handler(req, res) {
   const { authorization } = req.headers;
-  console.log('verify-token-api: ', authorization)
 
   if (!authorization) {
     return res.status(401).json({ is_token_valid: false });
