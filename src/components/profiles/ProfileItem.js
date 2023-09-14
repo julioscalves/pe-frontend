@@ -39,7 +39,7 @@ export default function ListItem({ item }) {
 
         {item.is_advisor ? (
           <h5 className="text-sm font-semibold mb-2 text-gray-100 text-center">
-            Docente
+            Responsável (Docente ou RT)
           </h5>
         ) : (
           <></>
