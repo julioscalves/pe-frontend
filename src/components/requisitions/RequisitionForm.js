@@ -27,9 +27,7 @@ export default function Register() {
 
   const router = useRouter();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
+  const handleSubmit = async () => {
     if (!buttonDisabled) {
       const payload = {
         date,
@@ -151,7 +149,7 @@ export default function Register() {
               placeholder="Detalhes adicionais para a equipe do Biotério, como a faixa de idade."
             />
             <TagInputField tags={tags} setTags={setTags} />
-            <Button type="button" onClick={e => handleSubmit(e)} disabled={buttonDisabled}>
+            <Button type="button" onClick={handleSubmit} disabled={buttonDisabled}>
               Solicitar
             </Button>
           </form>
