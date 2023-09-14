@@ -19,7 +19,7 @@ async function fetchData({
   setError,
 }) {
   try {
-    const response = await fetch(URL + "ordering=name", {
+    const response = await fetch(URL + "ordering=-name", {
       headers: {
         Authorization: `Token ${authToken}`,
       },

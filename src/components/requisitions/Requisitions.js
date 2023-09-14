@@ -21,7 +21,6 @@ async function fetchData({
   setLoading,
   setError,
 }) {
-  console.log(URL);
   try {
     const response = await fetch(URL, {
       headers: {

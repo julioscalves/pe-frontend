@@ -76,7 +76,7 @@ function DeliveryItem({ delivery }) {
         <div className="col-span-full">
           <div className="absolute w-3 h-3 bg-gray-100 rounded-full mt-1.5 -left-1.5 border border-white dark:border-gray-900 dark:bg-gray-700"></div>
           <time className="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">
-            {moment(delivery.timestamp).format(datetimeFormats.date)}
+            {moment(delivery.date).format(datetimeFormats.date)}
           </time>
           <div className="flex">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white">

@@ -31,8 +31,6 @@ export default function DetailCard({ data, tags }) {
   const time = moment(data.timestamp).format(datetimeFormats.time);
   const deliver = moment(data.date).format(datetimeFormats.date);
 
-  console.log(data)
-
   return (
     <div className="bg-gray-800 p-4 rounded shadow-md">
       <DetailModalForm
