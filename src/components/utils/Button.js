@@ -9,10 +9,12 @@ export default function Button({
   disabled = false,
   size = "px-5 py-2.5 text-sm",
 }) {
+  colorStyle = disabled ? `bg-${color}-500 hover:bg-${color}-800` : `bg-${color}-900`
+  style = `text-white font-bold ${size} rounded transition duration-200 ${properties} ${colorStyle}`
   return (
     <button
       type={type}
-      className={`text-white font-bold ${size} rounded bg-${color}-500 transition duration-200 hover:bg-${color}-800 ${properties}`}
+      className={style}
       disabled={disabled}
       onClick={onClick}
     >
