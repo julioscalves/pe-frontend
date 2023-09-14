@@ -19,10 +19,10 @@ const propertyTranslationTable = {
   by_protocol: "protocolo",
   by_institute: "entidade",
   by_department: "departamento",
-  by_advisor: "orientador",
-  by_author: "discente",
-  by_project: "projeto",
-  by_tags: "tag",
+  by_advisor: "responsável",
+  by_author: "autor",
+  by_project: "projeto ou solicitação",
+  by_tags: "etiqueta",
 };
 
 async function fetchData({ URL, authToken, setData }) {

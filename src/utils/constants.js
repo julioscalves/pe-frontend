@@ -13,7 +13,7 @@ export const STATISTICS_PATH = "api/statistics/";
 export const REQUISITION_STATUS = {
   EN: "Enviada",
   RE: "Recebida",
-  PA: "Parcialmente concluída",
+  PA: "Em Andamento",
   CO: "Concluída",
   PR: "Em Produção",
   SU: "Suspensa",

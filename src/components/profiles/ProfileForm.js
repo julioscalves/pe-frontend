@@ -151,14 +151,14 @@ export default function ProfileForm() {
         />
         <div className="grid grid-cols-2 gap-4 py-4">
           <Checkbox
-            label="Membro do corpo técnico"
+            label="Técnico?"
             text="Define usuários com permissões para acessar e manipular os dados do sistema"
             checked={isStaff}
             onChange={() => setIsStaff(!isStaff)}
           />
           <Checkbox
-            label="Membro do corpo docente"
-            text="Define usuários que podem ser listados como orientadores"
+            label="Servidor responsável?"
+            text="Define usuários que podem ser listados como responsáveis pelos pedidos, como docentes, coordenadores e responsáveis técnicos de outros departamentos"
             checked={isAdvisor}
             onChange={() => setIsAdvisor(!isAdvisor)}
           />

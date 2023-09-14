@@ -38,7 +38,7 @@ export default function ProjectCard({ project }) {
         {project.author.institute?.abbreviation ?? ""}
       </p>
       <p>
-        Orientador: {project.advisor.name} -{" "}
+        Responsável: {project.advisor.name} -{" "}
         {project.advisor.department?.name + "/" ?? ""}
         {project.advisor.institute?.abbreviation ?? ""}
       </p>

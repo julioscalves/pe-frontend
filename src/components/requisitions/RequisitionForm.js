@@ -151,7 +151,7 @@ export default function Register() {
               placeholder="Detalhes adicionais para a equipe do Biotério, como a faixa de idade."
             />
             <TagInputField tags={tags} setTags={setTags} />
-            <Button type="button" disabled={buttonDisabled}>
+            <Button type="button" onClick={e => handleSubmit(e)} disabled={buttonDisabled}>
               Solicitar
             </Button>
           </form>
