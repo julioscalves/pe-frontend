@@ -54,11 +54,13 @@ export default function RequisitionSidebar({
                 setVisualizationData={setVisualizationData}
                 data={data}
               />
+              {/*
               <div className="mx-auto text-center">
                 <Button color="blue" onClick={() => setIsModalActive(true)}>
                   Gerenciar tags
                 </Button>
               </div>
+              */}
             </Sidebar.Item>
             <Sidebar.Item href="#">
               <div className="flex items-center justify-center">
