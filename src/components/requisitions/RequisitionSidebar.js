@@ -44,7 +44,7 @@ export default function RequisitionSidebar({
         )}
         <Sidebar.Items>
           <Sidebar.ItemGroup>
-            <Sidebar.Item>S
+            <Sidebar.Item>
               <div className="flex items-center justify-center">
                 <FaFilter className="mr-2" />
                 <p className="text-xl font-bold">Filtragem por etiqueta</p>
