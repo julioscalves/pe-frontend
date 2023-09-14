@@ -9,8 +9,8 @@ export default function Button({
   disabled = false,
   size = "px-5 py-2.5 text-sm",
 }) {
-  colorStyle = disabled ? `bg-${color}-500 hover:bg-${color}-800` : `bg-${color}-900`
-  style = `text-white font-bold ${size} rounded transition duration-200 ${properties} ${colorStyle}`
+  const colorStyle = disabled ? `bg-${color}-500 hover:bg-${color}-800` : `bg-${color}-900`
+  const style = `text-white font-bold ${size} rounded transition duration-200 ${properties} ${colorStyle}`
   return (
     <button
       type={type}
