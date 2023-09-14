@@ -135,7 +135,7 @@ export default function DeliveryCard({ data, males, females, protocol }) {
       )}
       {data?.length > 0 ? (
         <p>
-          Pendentes: {malesRemaining}M {femalesRemaining}F
+          Pendentes: {femalesRemaining}F {malesRemaining}M
         </p>
       ) : (
         <></>
@@ -147,7 +147,7 @@ export default function DeliveryCard({ data, males, females, protocol }) {
         pill
         disabled={malesRemaining <= 0 && femalesRemaining <= 0}
       >
-        {malesRemaining === 0 && femalesRemaining === 0
+        {malesRemaining <= 0 && femalesRemaining <= 0
           ? "Quantitativo solicitado entregue com sucesso"
           : "Registrar entrega"}
       </Button>
