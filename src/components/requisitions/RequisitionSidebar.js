@@ -44,10 +44,10 @@ export default function RequisitionSidebar({
         )}
         <Sidebar.Items>
           <Sidebar.ItemGroup>
-            <Sidebar.Item>
+            <Sidebar.Item>S
               <div className="flex items-center justify-center">
                 <FaFilter className="mr-2" />
-                <p className="text-xl font-bold">Filtragem por tag</p>
+                <p className="text-xl font-bold">Filtragem por etiqueta</p>
               </div>
               <FilterTags
                 visualizationData={visualizationData}
