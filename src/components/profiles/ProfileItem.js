@@ -6,7 +6,6 @@ export default function ListItem({ item }) {
   const [isModalActive, setIsModalActive] = useState(false);
   const advisorStyle = "outline outline-offset-2 outline-blue-500";
   const staffStyle = "outline outline-offset-2 outline-amber-500";
-  console.log(item);
   return (
     <div>
       {isModalActive && (

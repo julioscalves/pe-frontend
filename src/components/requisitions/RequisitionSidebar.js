@@ -3,7 +3,6 @@ import { Sidebar } from "flowbite-react";
 import FilterTags from "./FilterTags";
 import FilterDate from "./FilterDate";
 import { FaFilter } from "react-icons/fa";
-import Button from "../utils/Button";
 import { MdMenu, MdMenuOpen } from "react-icons/md";
 import TagModalForm from "./TagModalForm";
 
