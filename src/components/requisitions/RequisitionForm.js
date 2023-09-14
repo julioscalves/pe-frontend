@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import InputField from "../utils/InputField";
 import AutocompleteInputField from "../utils/AutocompleteInputField";
-import Button from "../utils/SubmitButton";
+import Button from "../utils/Button";
 import { ROOT_URL, REQUISITIONS_PATH, PROJECTS_PATH } from "@/utils/constants";
 import { useAuth } from "@/contexts/AuthContext";
 import TagInputField from "../utils/TagInputField";
