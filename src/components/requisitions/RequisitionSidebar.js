@@ -3,7 +3,6 @@ import { Sidebar } from "flowbite-react";
 import FilterTags from "./FilterTags";
 import FilterDate from "./FilterDate";
 import { FaFilter } from "react-icons/fa";
-import Button from "../utils/Button";
 import { MdMenu, MdMenuOpen } from "react-icons/md";
 import TagModalForm from "./TagModalForm";
 
@@ -47,18 +46,20 @@ export default function RequisitionSidebar({
             <Sidebar.Item>
               <div className="flex items-center justify-center">
                 <FaFilter className="mr-2" />
-                <p className="text-xl font-bold">Filtragem por tag</p>
+                <p className="text-xl font-bold">Filtragem por etiqueta</p>
               </div>
               <FilterTags
                 visualizationData={visualizationData}
                 setVisualizationData={setVisualizationData}
                 data={data}
               />
+              {/*
               <div className="mx-auto text-center">
                 <Button color="blue" onClick={() => setIsModalActive(true)}>
                   Gerenciar tags
                 </Button>
               </div>
+              */}
             </Sidebar.Item>
             <Sidebar.Item href="#">
               <div className="flex items-center justify-center">
