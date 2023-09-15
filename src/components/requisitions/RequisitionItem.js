@@ -52,16 +52,19 @@ export default function ListItem({ item, tags }) {
           Solicitação {item.protocol}
         </h3>
         <p className="text-gray-400">
-          <strong>Autor:</strong> {item.author.name}
+          <strong>Autor:</strong> {item.author.name} ({item.author.institute.abbreviation})
+        </p>
+        <p className="text-gray-400">
+          <strong>Responsável:</strong> {item.advisor.name} ({item.advisor.institute.abbreviation})
         </p>
         <p className="text-gray-400">
           <strong>Quantidade:</strong> {item.females}F {item.males}M
         </p>
         <p className="text-gray-400">
-          <strong>Data de entrega:</strong> {deliverDate.date}
+          <strong>Estimativa de finalização de entregas:</strong> {deliverDate.date}
         </p>
         <p className="text-gray-400">
-          <strong>Momento do pedido:</strong> às {itemDateAndTime.time} de{" "}
+          <strong>Momento de registro do pedido:</strong> às {itemDateAndTime.time} de{" "}
           {itemDateAndTime.date}
         </p>
         {}
