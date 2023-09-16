@@ -39,6 +39,8 @@ export default function Register() {
       };
 
       try {
+        setLoading(true);
+        setButtonDisabled(true);
         const response = await fetch(ROOT_URL + REQUISITIONS_PATH, {
           method: "POST",
           headers: {
@@ -52,6 +54,7 @@ export default function Register() {
           setDisplayAlert(true);
           setAlertType("success");
           setAlertMessage("Projeto enviado com successo! Redirecionando...");
+          setLoading(false);
 
           router.push("/dashboard/requisitions");
         } else {
@@ -65,6 +68,9 @@ export default function Register() {
         setDisplayAlert(true);
         setAlertType("danger");
         setAlertMessage("Erro na submissão do formulário: " + error.message);
+      } finally {
+        setLoading(false);
+        setButtonDisabled(false);
       }
     }
   };
@@ -149,7 +155,11 @@ export default function Register() {
               placeholder="Detalhes adicionais para a equipe do Biotério, como a faixa de idade."
             />
             <TagInputField tags={tags} setTags={setTags} />
-            <Button type="button" onClick={handleSubmit} disabled={buttonDisabled}>
+            <Button
+              type="button"
+              onClick={handleSubmit}
+              disabled={buttonDisabled}
+            >
               Solicitar
             </Button>
           </form>

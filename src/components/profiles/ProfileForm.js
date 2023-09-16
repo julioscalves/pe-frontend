@@ -11,7 +11,11 @@ import {
 import { useAuth } from "@/contexts/AuthContext";
 import LoadingSpinner from "../utils/LoadingSpinner";
 import Checkbox from "@/components/utils/Checkbox";
+import Button from "../utils/Button";
 import { useRouter } from "next/router";
+import { FaPlus } from "react-icons/fa";
+import DepartmentModalForm from "./DepartmentModalForm";
+import InstituteModalForm from "./InstituteModalForm";
 
 export default function ProfileForm() {
   const [username, setUsername] = useState("");
@@ -26,6 +30,10 @@ export default function ProfileForm() {
   const [department, setDepartment] = useState("");
   const [loading, setLoading] = useState(false);
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
+  const [isInstituteModalFormOpen, setIsInstituteModalFormOpen] =
+    useState(false);
+  const [isDepartmentModalFormOpen, setIsDepartmentModalFormOpen] =
+    useState(false);
 
   const router = useRouter();
   const { authToken } = useAuth();
@@ -95,6 +103,18 @@ export default function ProfileForm() {
   return (
     <div className="bg-gray-800 py-8 max-w-lg mx-auto">
       {loading ? <LoadingSpinner /> : <></>}
+      {isInstituteModalFormOpen && (
+        <InstituteModalForm
+          isModalActive={isInstituteModalFormOpen}
+          setIsModalActive={setIsInstituteModalFormOpen}
+        />
+      )}
+      {isDepartmentModalFormOpen && (
+        <DepartmentModalForm
+          isModalActive={isDepartmentModalFormOpen}
+          setIsModalActive={setIsDepartmentModalFormOpen}
+        />
+      )}
       <form onSubmit={handleSubmit} className="mx-8">
         <h2 className="text-2xl font-semibold mb-4 text-center">
           Novo perfil de usuário
@@ -176,22 +196,51 @@ export default function ProfileForm() {
           placeholder="usuario@provedor.com"
           onChange={(e) => setEmail(e.target.value)}
         />
-        <AutocompleteInputField
-          label="Instituição*"
-          value={institute}
-          onChange={(e) => setInstitute(e.target.value)}
-          url={ROOT_URL + INSTITUTES_PATH}
-          placeholder="Busca por instituições"
-          field="name"
-        />
-        <AutocompleteInputField
-          label="Departamento*"
-          value={department}
-          onChange={(e) => setDepartment(e.target.value)}
-          url={ROOT_URL + DEPARTMENTS_PATH}
-          placeholder="Busca por departamentos"
-          field="name"
-        />
+        <div className="grid grid-cols-6">
+          <div className="col-span-5">
+            <AutocompleteInputField
+              label="Instituição*"
+              value={institute}
+              onChange={(e) => setInstitute(e.target.value)}
+              url={ROOT_URL + INSTITUTES_PATH}
+              placeholder="Busca por instituições"
+              field="name"
+            />
+          </div>
+          <div className="my-auto mx-auto pt-2 col-span-1">
+            <Button
+              type="button"
+              color="sky"
+              onClick={() => setIsInstituteModalFormOpen(true)}
+            >
+              <FaPlus />
+            </Button>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-6">
+          <div className="col-span-5">
+            <AutocompleteInputField
+              label="Departamento*"
+              value={department}
+              onChange={(e) => setDepartment(e.target.value)}
+              url={ROOT_URL + DEPARTMENTS_PATH}
+              placeholder="Busca por departamentos"
+              field="name"
+              showIdentifier={true}
+              identifier="institute.abbreviation"
+            />
+          </div>
+          <div className="my-auto mx-auto pt-2 col-span-1">
+            <Button
+              type="button"
+              color="sky"
+              onClick={() => setIsDepartmentModalFormOpen(true)}
+            >
+              <FaPlus />
+            </Button>
+          </div>
+        </div>
         <SubmitButton disabled={isButtonDisabled} onClick={handleSubmit}>
           Enviar
         </SubmitButton>

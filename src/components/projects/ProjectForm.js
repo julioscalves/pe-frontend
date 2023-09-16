@@ -139,6 +139,8 @@ export default function ProjectForm() {
           field="name"
           filterOut={true}
           filterOutBy={"is_advisor"}
+          showIdentifier={true}
+          identifier="institute.abbreviation"
         />
         <AutocompleteInputField
           label="Responsável"
@@ -147,6 +149,8 @@ export default function ProjectForm() {
           url={ROOT_URL + PROFILES_PATH}
           placeholder="Realizar busca por responsáveis"
           field="name"
+          showIdentifier={true}
+          identifier="institute.abbreviation"
           filterIn={true}
           filterInBy={"is_advisor"}
         />

@@ -1,18 +1,19 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Button, Modal } from "flowbite-react";
 import InputField from "../utils/InputField";
-import { ROOT_URL, DEPARTMENTS_PATH } from "@/utils/constants";
+import { ROOT_URL, DEPARTMENTS_PATH, INSTITUTES_PATH } from "@/utils/constants";
 import { useAuth } from "@/contexts/AuthContext";
 import TextArea from "../utils/TextArea";
 import AutocompleteInputField from "../utils/AutocompleteInputField";
 
-export default function ProfileModalForm({
+export default function DepartmentModalForm({
   isModalActive,
   setIsModalActive,
 }) {
   const [name, setName] = useState(null);
   const [institute, setInstitute] = useState(null);
-  const [description, setDescription] = useState(null);
+  const [description, setDescription] = useState("");
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
   const { authToken } = useAuth();
 
@@ -21,12 +22,12 @@ export default function ProfileModalForm({
 
     const payload = {
       name,
-      abbreviation,
+      institute,
       description,
     };
 
     try {
-      const response = await fetch(ROOT_URL + INSTITUTES_PATH, {
+      const response = await fetch(ROOT_URL + DEPARTMENTS_PATH, {
         method: "POST",
         headers: {
           Authorization: `Token ${authToken}`,

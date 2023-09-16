@@ -5,7 +5,6 @@ import { useAuth } from "@/contexts/AuthContext";
 import BackButton from "../utils/BackButton";
 import Link from "next/link";
 import Button from "../utils/Button";
-import { useRouter } from "next/router";
 import Pagination from "../utils/Paginator";
 import LoadingSpinner from "../utils/LoadingSpinner";
 
@@ -19,7 +18,7 @@ async function fetchData({
   setError,
 }) {
   try {
-    const response = await fetch(URL + "ordering=-name", {
+    const response = await fetch(URL + "ordering=name", {
       headers: {
         Authorization: `Token ${authToken}`,
       },
@@ -105,7 +104,7 @@ export default function Events() {
       <div className="grid grid-cols-1 gap-4 mx-5">
         <div className="grid grid-cols-2">
           <div className="text-left">
-            <BackButton>Retornar</BackButton>
+            <BackButton />
           </div>
           <div className="text-right">
             <Link href="/dashboard/profiles/create">
@@ -115,7 +114,6 @@ export default function Events() {
         </div>
         {data.length >= 1 ? (
           data
-            .reverse()
             .map((item) => <ProfileItem key={item.id} item={item} />)
         ) : (
           <p className="text-center text-2xl font-semibold text-gray-500">

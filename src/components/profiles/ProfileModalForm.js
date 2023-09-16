@@ -121,6 +121,8 @@ export default function ProfileModalForm({
                 value={department}
                 onChange={(e) => setDepartment(e.target.value)}
                 url={ROOT_URL + DEPARTMENTS_PATH}
+                showIdentifier={true}
+                identifier="institute.abbreviation"
                 placeholder="Busca por departamentos"
                 field="name"
               />
