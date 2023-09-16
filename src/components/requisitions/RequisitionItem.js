@@ -55,7 +55,7 @@ export default function ListItem({ item, tags }) {
           <strong>Autor:</strong> {item.author.name} ({item.author.institute.abbreviation})
         </p>
         <p className="text-gray-400">
-          <strong>Responsável:</strong> {item.advisor.name} ({item.advisor.institute.abbreviation})
+          <strong>Responsável:</strong> {item.project.advisor.name} ({item.project.advisor.institute.abbreviation})
         </p>
         <p className="text-gray-400">
           <strong>Quantidade:</strong> {item.females}F {item.males}M
