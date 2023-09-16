@@ -1,17 +1,18 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Button, Modal } from "flowbite-react";
 import InputField from "../utils/InputField";
 import { ROOT_URL, INSTITUTES_PATH } from "@/utils/constants";
 import { useAuth } from "@/contexts/AuthContext";
 import TextArea from "../utils/TextArea";
 
-export default function ProfileModalForm({
+export default function InstituteModalForm({
   isModalActive,
   setIsModalActive,
 }) {
   const [name, setName] = useState(null);
   const [abbreviation, setAbbreviation] = useState(null);
-  const [description, setDescription] = useState(null);
+  const [description, setDescription] = useState("");
+  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
   const { authToken } = useAuth();
 

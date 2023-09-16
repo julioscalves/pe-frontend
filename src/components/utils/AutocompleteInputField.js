@@ -46,6 +46,11 @@ export default function AutocompleteInputField({
           results = data;
         }
 
+        const getProperty = (object, property) => {
+          const keys = Array.isArray(property) ? property : property.split('.');
+          return keys.reduce((value, key) => (value && typeof value === 'object') ? value[key] : undefined, object);
+        };
+
         if (results.hasOwnProperty("user")) {
           results = results.filter((item) => !item.user.is_staff);
         }
@@ -59,7 +64,7 @@ export default function AutocompleteInputField({
         }
 
         const newOptions = showIdentifier
-          ? results.map((item) => `${item[field]} - ${item[identifier]}`)
+          ? results.map((item) => `${item[field]} - ${getProperty(item, identifier)}`)
           : results.map((item) => item[field]);
 
         setOptions(newOptions);
