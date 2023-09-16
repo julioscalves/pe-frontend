@@ -31,8 +31,8 @@ export default function Bar({ data }) {
         data={transformedData}
         keys={[
           "Machos solicitados",
-          "Fêmeas solicitadas",
           "Machos entregues",
+          "Fêmeas solicitadas",
           "Fêmeas entregues",
         ]}
         indexBy="id"
