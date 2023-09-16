@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect } from "react";
 import { useAuth } from "@/contexts/AuthContext";
 
 export default function AutocompleteInputField({
@@ -26,7 +26,7 @@ export default function AutocompleteInputField({
 
     const fetchOptions = async () => {
       try {
-        const response = await fetch(`${url}?search=${inputValue}`, {
+        const response = await fetch(`${url}?search=${inputValue}&ordering=name`, {
           headers: {
             Authorization: `Token ${authToken}`,
           },

@@ -144,6 +144,8 @@ export default function ProjectModalForm({
                 url={ROOT_URL + PROFILES_PATH}
                 placeholder="Realizar busca por autor"
                 field="name"
+                showIdentifier={true}
+                identifier="institute.abbreviation"
                 filterOut={true}
                 filterOutBy={"is_advisor"}
               />
@@ -154,6 +156,8 @@ export default function ProjectModalForm({
                 url={ROOT_URL + PROFILES_PATH}
                 placeholder="Realizar busca por responsável"
                 field="name"
+                showIdentifier={true}
+                identifier="institute.abbreviation"
                 filterIn={true}
                 filterInBy={"is_advisor"}
               />
